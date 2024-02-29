@@ -1,66 +1,64 @@
-# Gestion de la Livraison - PAPSxWELYNE -
+# Delivery Management - ClientxWELYNE -
 
-Ce projet est dédié à la gestion optimisée de la livraison de marchandises en utilisant des algorithmes de routage. Il fournit une solution pour optimiser les itinéraires de livraison pour plusieurs missions et tâches.
+This project is dedicated to optimizing goods delivery using routing algorithms. It provides a solution to optimize delivery routes for multiple missions and tasks.
 
-## Description des Fichiers
+## File Description
 
-- `Final_algorithm.py` contient la fonction principale qui génère les itinéraires de livraison optimisés.
-- `Main_functions.py` contient les fonctions secondaires utilisées pour les calculs d'optimisation et autres .
-- `TSP_modified.py` contient les fonctions primaires utilisées pour les calculs d'optimisation.
-- `API_Call.py` est un fichier essentiel pour l'API de l'application.
+- `Final_algorithm.py` contains the main function that generates optimized delivery routes.
+- `Main_functions.py` contains secondary functions used for optimization calculations and others.
+- `TSP_modified.py` contains primary functions used for optimization calculations.
+- `API_Call.py` is an essential file for the application's API.
 
-## Exécution en Local
+## Running Locally
 
-Si vous souhaitez exécuter cette application en local pour des tests ou des développements, suivez ces étapes :
+If you want to run this application locally for testing or development, follow these steps:
 
-1. Assurez-vous d'avoir Python installé sur votre système. Si ce n'est pas le cas, téléchargez-le à partir de [Python.org](https://www.python.org/downloads/) et installez-le.
+1. Make sure you have Python installed on your system. If not, download it from [Python.org](https://www.python.org/downloads/) and install it.
 
-2. Clonez ce référentiel sur votre machine en utilisant la commande suivante :
+2. Clone this repository to your machine using the following command:
 
    ```bash
-   git clone https://github.com/paps-app/welyne-api
+   git clone https://github.com/client-app/welyne-api
    ```
 
-3. Accédez au répertoire de votre projet :
+3. Navigate to your project directory:
 
    ```bash
    cd welyne-api/11-16-2023
    ```
 
-
-4. Installez les dépendances requises à partir du fichier `requirements.txt` :
+4. Install required dependencies from the `requirements.txt` file:
 
    ```bash
    pip install -r requirements.txt
    ```
 
-
-5. Maintenant, vous pouvez exécuter l'application en utilisant la commande suivante :
+5. Now, you can run the application using the following command:
 
    ```bash
    python API_Call.py
    ```
 
-6. Si il y un problem dans l'execution(Puis reessayer 5. ) :
+6. If there is a problem in the execution (then retry step 5):
 
    ```bash
    pip install --upgrade Flask
    ```
 
-   L'application devrait être accessible à l'adresse [http://localhost:5000](http://localhost:5000). Vous pouvez accéder à l'API à l'aide de cet URL.
+   The application should be accessible at [http://localhost:5000](http://localhost:5000). You can access the API using this URL.
 
-N'oubliez pas que vous devrez également obtenir des clés d'API si vous utilisez des services tiers, comme Google Maps, pour des fonctionnalités spécifiques de l'application.
+Don't forget that you'll also need to obtain API keys if you're using third-party services, like Google Maps, for specific features of the application.
 
-## Test avec Postman
+## Testing with Postman
 - http://127.0.0.1:5000/api/v1/runsheet-proposal
-Si vous souhaitez tester l'API en local, vous pouvez utiliser des outils comme Postman pour envoyer des demandes POST aux points d'extrémité appropriés. Des exemples de données de missions sont fournis dans le fichier `missions.js`.
+If you want to test the API locally, you can use tools like Postman to send POST requests to the appropriate endpoints. Examples of mission data are provided in the `missions.js` file.
 
 ## Output
 
-La documentation des runsheets proposee est dans le document 'welyne-api\11-16-2023\openapi_welyne.yaml'
+The proposed runsheets documentation is in the document 'welyne-api\11-16-2023\openapi_welyne.yaml'
 
-## À Propos du Projet
+## About the Project
 
-Ce projet vise à fournir une solution efficace pour la gestion de la livraison de marchandises en optimisant les itinéraires. Il utilise des algorithmes avancés pour s'assurer que les missions sont accomplies de la manière la plus efficace possible.
+This project aims to provide an efficient solution for goods delivery management by optimizing routes. It uses advanced algorithms to ensure missions are accomplished as efficiently as possible.
 
-**Auteur** : Youssef Ghaoui
+**Author**: Youssef Ghaoui
