@@ -24,7 +24,7 @@ If you want to run this application locally for testing or development, follow t
 3. Navigate to your project directory:
 
    ```bash
-   cd welyne-api/11-16-2023
+   cd welyne-api/BaseFunctions
    ```
 
 4. Install required dependencies from the `requirements.txt` file:
