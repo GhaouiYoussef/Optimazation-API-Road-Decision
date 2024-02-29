@@ -2,8 +2,8 @@
 
 This project is dedicated to optimizing goods delivery using routing algorithms. It provides a solution to optimize delivery routes for multiple missions and tasks.
 # 
--This project has been custom made for the client. 
-   =>Feel free to use it and change it to your needs.
+This project has been custom made for the client. 
+Feel free to use it and change it to your needs.
    
 ## File Description
 
