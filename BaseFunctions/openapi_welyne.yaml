@@ -1,0 +1,236 @@
+openapi: 3.0.3
+info:
+  title: API Welyne - OpenAPI 1.0
+  description: Sample API for Welyne based on OpenAPI 3.0 specification.
+  version: 1.0.1
+servers:
+  - url: https://welyne-api.io/api/v1
+tags:
+  - name: Runsheet
+    description: Everything about your Runsheets
+paths:
+  /runsheet-proposal:
+    post:
+      tags:
+        - Runsheet
+      summary: Make runsheet proposal
+      parameters:
+        - name: X-Correlation-ID
+          in: header
+          description: Unique identifier value that is attached to requests and messages for referencing a particular transaction or event chain.
+          schema:
+            type: string
+      description: Make runsheet proposal
+      operationId: makeRunsheet
+      requestBody:
+        description: Propose one or more runsheets
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RunsheetProposalBody'
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/RunsheetProposalBody'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/RunsheetProposalBody'
+        required: true
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RunsheetProposalResponse'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/RunsheetProposalResponse'
+        '400':
+          description: Bad Request
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+        '500':
+          description: Internal Server Error
+      security:
+        - api_key:
+            - write:runsheets
+            - read:runsheets
+components:
+  schemas:
+    RunsheetProposalBody:
+      type: array
+      items:
+        $ref: '#/components/schemas/RunsheetProposalItem'
+    RunsheetProposalItem:
+      type: object
+      required:
+        - uid
+        - type
+        - productType
+        - tasks
+      properties:
+        uid:
+          type: string
+          example: PP-MIS-MSG469682687
+        status:
+          type: string
+          enum:
+            - NOT_STARTED
+        type:
+          type: string
+          enum:
+            - MSG
+            - NT
+            - TR
+        productType:
+          type: string
+          enum:
+            - FRAGILE
+            - FOOD
+        tasks:
+          type: array
+          items:
+            $ref: '#/components/schemas/Task'
+    Task:
+      type: object
+      required:
+        - _id
+        - action
+        - status
+        - stops
+      properties:
+        _id:
+          type: string
+          example: 64b9212c393c1e0020319d59
+        action:
+          type: string
+          enum:
+            - PICKUP
+            - DELIVERY
+        status:
+          type: string
+          enum:
+            - NOT_STARTED
+            - ASSIGNED
+        stops:
+          type: array
+          items:
+            $ref: '#/components/schemas/Stop'
+    Stop:
+      type: object
+      required:
+        - action
+        - address
+        - items
+      properties:
+        action:
+          type: string
+          enum:
+            - PICKUP
+            - DELIVERY
+        address:
+          type: object
+          required:
+            - place_id
+            - region
+            - address
+          properties:
+            place_id:
+              type: string
+              example: ChIJBegeFFVWlQ4RZH5q8xIdHek
+            region:
+              type: string
+              example: Saint-Louis Region
+            address:
+              type: string
+              example: Saint Louis, Saint-Louis Region, Senegal
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/Item'
+    Item:
+      type: object
+      required:
+        - product
+      properties:
+        product:
+          type: object
+          required:
+            - parcelUid
+            - parcelVolume
+          properties:
+            parcelUid:
+              type: string
+              example: PP-O7259310-2835
+            parcelVolume:
+              type: number
+              example: 150
+    RunsheetProposalResponse:
+      type: object
+      properties:
+        status:
+          type: string
+          enum:
+            - success
+            - error
+        code:
+          type: integer
+          example: 200
+        message:
+          type: string
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/RunsheetResponseData'
+    RunsheetResponseData:
+      type: object
+      properties:
+        Runsheet:
+          type: array
+          items:
+            $ref: '#/components/schemas/RunsheetItem'
+        description:
+          type: array
+          items:
+            type: string
+        google_maps_link_list:
+          type: array
+          items:
+            type: string
+        vehicleType:
+          type: string
+          enum:
+            - SCOOTER
+            - VAN
+            - MINI VAN
+            - CAMION
+    RunsheetItem:
+      type: object
+      properties:
+        productType:
+          type: array
+          items: {}
+        tasks:
+          type: array
+          items:
+            $ref: '#/components/schemas/Task'
+        type:
+          type: string
+          example: MSG
+        uid:
+          type: string
+          example: PP-MIS-MSG921261085
+    RunsheetProposalResponse:
+      $ref: '#/components/schemas/RunsheetResponseData'
+  requestBodies:
+    RunsheetProposal:
+      $ref: '#/components/schemas/RunsheetProposalBody'
+  securitySchemes:
+    api_key:
+      type: apiKey
+      name: api_key
+      in: header
