@@ -58,7 +58,7 @@ If you want to test the API locally, you can use tools like Postman to send POST
 
 ## Output
 
-The proposed runsheets documentation is in the document 'welyne-api\11-16-2023\openapi_welyne.yaml'
+The proposed runsheets documentation is in the document 'welyne-api\BaseFunctions\openapi_welyne.yaml'
 
 ## About the Project
 
